@@ -1,24 +1,42 @@
 class StatusesController < ApplicationController
+  before_filter :authenticate_user!, only: [:new]
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses
   # GET /statuses.json
   def index
     @statuses = Status.all
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @statuses }
+    end
   end
 
   # GET /statuses/1
   # GET /statuses/1.json
   def show
+    @status = Status.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @status }
+    end
   end
 
   # GET /statuses/new
   def new
     @status = Status.new
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @status }
+    end
   end
 
   # GET /statuses/1/edit
   def edit
+    @status = Status.find(params[:id])
   end
 
   # POST /statuses
