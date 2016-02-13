@@ -56,9 +56,15 @@ class StatusesControllerTest < ActionController::TestCase
   end
 
 
+  test "should redirect status update when not logged in" do
+    put :update, id: @status, status: { content: @status.content}
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
 
-  test "should update status" do
-    patch :update, id: @status, status: { content: @status.content}
+  test "should update status when logged in" do
+    sign_in users(:carlos)
+    put :update, id: @status, status: {content: @status.content }
     assert_redirected_to status_path(assigns(:status))
   end
 
