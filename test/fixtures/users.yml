@@ -3,3 +3,9 @@ carlos:
   last_name: "ferreira"
   email: "carlosprovisorio@icloud.com"
   profile_name: "carlosferreira"
+
+carol:
+  first_name: "Carolina"
+  last_name: "Miranda"
+  email: "carolgomesm@gmail.com"
+  profile_name: "carolinamiranda"
